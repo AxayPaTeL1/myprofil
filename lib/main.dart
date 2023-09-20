@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myprofile/view/home_view/home_view.dart';
-import 'package:myprofile/view/login_view/login_view.dart';
+import 'package:myprofile/view/edit_profile_screen/edit_profile_screen.dart';
+import 'package:myprofile/view/login_screen/login_controller.dart';
+import 'package:myprofile/view/login_screen/login_screen.dart';
+import 'package:myprofile/view/profile_screen/home_screen.dart';
 
-import 'view/login_view/login_controller.dart';
 
 void main() {
   runApp( MyApp());
@@ -33,7 +34,14 @@ class MyApp extends StatelessWidget {
           name: '/home',
           page: () => HomeScreen(),
         ),
+        GetPage(
+          name: '/editProfile',
+          page: () => EditProfileScreen(),
+        ),
       ],
     );
   }
 }
+
+
+bool kDebugMode = true;
