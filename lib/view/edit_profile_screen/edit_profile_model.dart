@@ -1,21 +1,18 @@
-
-
 class ProfileModel {
-  int id;
-  String name;
-  String email;
-  String imagePath;
-  String skills;
-  String experience;
+  int? id;
+  String? name;
+  String? email;
+  String? imagePath;
+  String? skills;
+  String? experience;
 
-  ProfileModel({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.imagePath,
-    required   this.skills,
-    required   this.experience,
-  });
+  ProfileModel(
+      {this.id,
+      this.name,
+      this.email,
+      this.imagePath,
+      this.skills,
+      this.experience});
 
   Map<String, dynamic> toMap() {
     return {
@@ -26,5 +23,25 @@ class ProfileModel {
       'skills': skills,
       'experience': experience,
     };
+  }
+
+  ProfileModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    imagePath = json['imagePath'];
+    skills = json['skills'];
+    experience = json['experience'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['email'] = this.email;
+    data['imagePath'] = this.imagePath;
+    data['skills'] = this.skills;
+    data['experience'] = this.experience;
+    return data;
   }
 }

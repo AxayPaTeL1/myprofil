@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myprofile/utils/commen_method.dart';
 import 'package:myprofile/view/edit_profile_screen/edit_profile_screen.dart';
 import 'package:myprofile/view/login_screen/login_controller.dart';
 import 'package:myprofile/view/login_screen/login_screen.dart';
 import 'package:myprofile/view/profile_screen/home_screen.dart';
 
-
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  final LoginController authController = Get.put(LoginController());
-   MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final LoginController authController = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: authController.isLoggedIn.value ? '/home' : '/login',
+      home: authController.isLoggedIn.value ? HomeScreen() : LoginScreen(),
       getPages: [
         GetPage(
-          name: '/login',
-          page: () => LoginScreen(),
-        ),
+            name: '/login',
+            page: () => LoginScreen(),
+            binding: LoginControllerBindings()),
         GetPage(
           name: '/home',
           page: () => HomeScreen(),
@@ -42,6 +46,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 bool kDebugMode = true;

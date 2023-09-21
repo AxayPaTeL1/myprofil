@@ -88,7 +88,15 @@ class LoginScreen extends GetView<LoginController> {
                     controller.login(username, password);
                     }
 
-                  }, child: const Text("Login")))
+                  }, child: const Text("Login"))),
+
+              const SizedBox(height: 20.0),
+              SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  child: ElevatedButton(onPressed: (){
+                    controller.googleLogin();
+                  }, child: const Text("Sign with Google")))
             ],
           ),
         ),
